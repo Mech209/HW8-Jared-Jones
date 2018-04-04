@@ -56,18 +56,17 @@ UU=AA\d';
 Un=[Un(1),UU',Un(nx)];
 % Store results for future use
 UUU(k,:)=Un;
+% to start over
+Uo=Un;    
 end
 
 
 %exact solution u(x,t) 
-u_exact = exp(-D*(k^2)*t')*sin(k*x);
+u_exact = exp(-D*(k^2)*t(T))*sin(k*x);
 u_exact1 = exp(-D*(k^2)*t(T/5))*sin(k*x); %t = T/5
 u_exact2 = exp(-D*(k^2)*t(T/2))*sin(k*x); %t = T/2
 u_exact3 = exp(-D*(k^2)*t(T))*sin(k*x); %t = T
 
 
 %error
-err = 1/N*sum(abs((UUU - u_exact)/u_exact));
-
-%plot
 
