@@ -2,7 +2,7 @@
 clear;clc;close
 
 F = 0;
-N = 20;
+N = 8;
 L = pi();
 dx = L/(N+1);
 T = 10;
@@ -20,8 +20,8 @@ gL = 0;
 D = 0.1;
 
 
-nx=22;   % or nx=[(10-0)/dx]+1 with L=10 cm
-nt=22;  % to compute 10 time steps k=[1,11]
+nx=N+2;   % or nx=[(10-0)/dx]+1 with L=10 cm
+nt=N+2;  % to compute 10 time steps k=[1,11]
 % ---Constant Coefficients of the tridiagonal system
 b = D/(2*dx^2);   % Super diagonal: coefficients of u(i+1)
 c = b;               % Subdiagonal: coefficients of u(i-1)
@@ -67,7 +67,9 @@ u_exact3 = exp(-D*(k^2)*t(T))*sin(k*x); %t = T
 
 
 %error
-err = 1/N*sum(abs((UUU - u_exact)/u_exact));
+err = 1/N*(abs((UUU - u_exact)/u_exact));
 
 %plot
+
+plot(x, UUU(:,[T/5 T/2 T]), x, u_exact(:,[T/5 T/2 T]))
 
